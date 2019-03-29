@@ -335,6 +335,13 @@
 		if (prob(30))
 			mob.jitteriness = min(mob.jitteriness + 10, 500)
 
+/datum/disease2/effect/fatigue
+	name = "Fatigue"
+	stage = 2
+	badness = VIRUS_COMMON
+	activate(var/mob/living/carbon/human/mob,var/multiplier)
+		mob.D_slowdown = 2
+		
 ////////////////////////STAGE 1/////////////////////////////////
 
 /datum/disease2/effect/sneeze
