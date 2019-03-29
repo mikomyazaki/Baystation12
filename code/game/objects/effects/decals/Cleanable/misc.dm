@@ -84,6 +84,7 @@
 	persistent = TRUE
 	generic_filth = TRUE
 	var/list/viruses = list()
+	var/list/datum/disease2/disease/virus2 = list()
 
 /obj/effect/decal/cleanable/vomit/New()
 	random_icon_states = icon_states(icon)

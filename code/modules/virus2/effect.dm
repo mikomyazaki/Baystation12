@@ -353,6 +353,20 @@
 			var/obj/effect/decal/cleanable/mucus/M = new(get_turf(mob))
 			M.virus2 = virus_copylist(mob.virus2)
 
+/datum/disease2/effect/vomit
+	name = "Vomiting"
+	stage = 1
+	delay = 60 SECONDS
+
+	activate(var/mob/living/carbon/human/mob,var/multiplier)
+		if (prob(30))
+			to_chat(mob, "<span class='warning'>You feel like you are about to be sick!</span>")
+		sleep(5)
+		mob.emote("vomit")
+		if (prob(50) && !mob.wear_mask)
+			var/obj/effect/decal/cleanable/vomit/M = new(get_turf(mob))
+			M.virus2 = virus_copylist(mob.virus2)
+
 /datum/disease2/effect/gunck
 	name = "Flemmingtons"
 	stage = 1

@@ -29,6 +29,15 @@
 						var/datum/disease2/disease/V = M.virus2[ID]
 						infect_virus2(src,V)
 
+			else if(istype(O,var/obj/effect/decal/cleanable/vomit/vomit))
+				var/obj/effect/decal/cleanable/vomit/vomit/M = O
+				if(isnull(M.virus2))
+					M.virus2 = list()
+				if(M.virus2.len)
+					for (var/ID in M.virus2)
+						var/datum/disease2/disease/V = M.virus2[ID]
+						infect_virus2(src,V)
+						
 	if(virus2.len)
 		for (var/ID in virus2)
 			var/datum/disease2/disease/V = virus2[ID]
