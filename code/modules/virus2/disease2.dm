@@ -12,6 +12,7 @@ LEGACY_RECORD_STRUCTURE(virus_records, virus_record)
 	var/antigen = list() // 16 bits describing the antigens, when one bit is set, a cure with that bit can dock here
 	var/max_stage = 4
 	var/list/affected_species = list(SPECIES_HUMAN,SPECIES_UNATHI,SPECIES_SKRELL)
+	var/list/self_cure_chance = list()
 
 /datum/disease2/disease/New()
 	uniqueID = rand(0,10000)
@@ -67,6 +68,15 @@ LEGACY_RECORD_STRUCTURE(virus_records, virus_record)
 		if(prob(mob.virus_immunity() * 0.05))
 			cure(mob, 1)
 			return
+
+	// check if the mob cures themselves at each stage based on the cure chance for that stage
+	// one chance per stage
+	if(stage >= 1 && self_cure_chance[stage])
+		if prob(self_cure_chance[stage])
+			cure(mob)
+			return
+		else
+			self_cure_chance[stage] = 0
 
 	// Some species are flat out immune to organic viruses.
 	if(mob.species.get_virus_immune(mob))
