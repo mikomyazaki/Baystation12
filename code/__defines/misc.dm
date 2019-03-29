@@ -192,6 +192,10 @@
 #define VIRUS_ENGINEERED	3
 #define VIRUS_EXOTIC		4	//Usually adminbus only
 
+//Virus type defines
+#define PATHOGEN_BACTERIAL  1
+#define PATHOGEN_VIRAL		2
+
 //Error handler defines
 #define ERROR_USEFUL_LEN 2
 
