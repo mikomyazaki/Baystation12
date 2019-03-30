@@ -28,6 +28,7 @@
 	if(istype(R)) 
 		R.clear_reagents()
 	nutrition = 400
+	hydration = 100
 	..()
 
 /mob/living/carbon/Move(NewLoc, direct)

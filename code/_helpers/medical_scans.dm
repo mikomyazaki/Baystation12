@@ -37,6 +37,7 @@
 	scan["blood_o2"] = H.get_blood_oxygenation()
 	scan["blood_volume"] = H.vessel.get_reagent_amount(/datum/reagent/blood)
 	scan["blood_volume_max"] = H.species.blood_volume
+	scan["hydration"] = H.hydration
 	scan["temperature"] = H.bodytemperature
 	scan["trauma"] = H.getBruteLoss()
 	scan["burn"] = H.getFireLoss()
@@ -198,6 +199,15 @@
 	if(skill_level >= SKILL_ADEPT)
 		if(ratio <= 0.70)
 			dat += "<tr><td colspan='2'><span class='bad'>Patient is in Hypovolemic Shock. Transfusion highly recommended.</span></td></tr>"
+
+	var/ratio = scan["hydration"]/100
+	dat += "<tr><td><strong>Hydration Level:</strong></td><td>[scan["blood_pressure"]]"
+	if(scan["hydration"] <= 50)
+		dat += "(<span class='bad'>[scan["hydration"]]% hydration</span>)</td></tr>"
+	else if(scan["hydration"] <= 75)
+		dat += "(<span class='average'>[scan["hydration"]]% hydration</span>)</td></tr>"
+	else
+		dat += "([scan["hydration"]]% hydration)</td></tr>"
 
 	// Body temperature.
 	/*

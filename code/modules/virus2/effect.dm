@@ -282,7 +282,7 @@
 				var/obj/effect/decal/cleanable/vomit/M = new(get_turf(mob))
 				M.virus2 = virus_copylist(mob.virus2)
 
-		//add dehydration effects
+				mob.hydration = max(mob.hydration - 5,0)
 
 ////////////////////////STAGE 2/////////////////////////////////
 /datum/disease2/effect/drowsness
@@ -376,7 +376,7 @@
 				var/obj/effect/decal/cleanable/vomit/M = new(get_turf(mob))
 				M.virus2 = virus_copylist(mob.virus2)
 
-		//add dehydration effects
+				mob.hydration = max(mob.hydration - 5,0)
 
 ////////////////////////STAGE 1/////////////////////////////////
 
@@ -412,7 +412,7 @@
 				var/obj/effect/decal/cleanable/vomit/M = new(get_turf(mob))
 				M.virus2 = virus_copylist(mob.virus2)
 
-		//add dehydration effects
+				mob.hydration = max(mob.hydration - 5,0)
 
 /datum/disease2/effect/gunck
 	name = "Flemmingtons"
