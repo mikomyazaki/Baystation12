@@ -268,7 +268,7 @@
 
 /datum/disease2/effect/vomit_severe
 	name = "Severe Vomiting"
-	stage = 1
+	stage = 3
 	delay = 20 SECONDS
 	badness = VIRUS_COMMON
 
@@ -362,7 +362,7 @@
 
 /datum/disease2/effect/vomit
 	name = "Vomiting"
-	stage = 1
+	stage = 2
 	delay = 40 SECONDS
 	badness = VIRUS_COMMON
 
