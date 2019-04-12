@@ -266,6 +266,15 @@
 	name = "Merchant"
 	warmup_time = 10
 	shuttle_area = /area/shuttle/merchant/home
+
+	destination_tags = list(
+		"nav_merchant_start",
+		"nav_merchant_out",
+		"merchant_ship_dock",
+		"nav_merchant_xilvuxix",
+		"nav_merchant_voxbase",
+		"nav_merchant_colony"
+		)
 	waypoint_station = "nav_merchant_start"
 	waypoint_offsite = "nav_merchant_out"
 	dock_target = "merchant_ship_dock"
@@ -274,6 +283,11 @@
 	name = "Merchant Base"
 	landmark_tag = "nav_merchant_start"
 	docking_controller = "merchant_station_dock"
+
+/obj/effect/shuttle_landmark/merchant/out
+	name = "Docking Bay"
+	landmark_tag = "nav_merchant_out"
+	docking_controller = "merchant_shuttle_station_dock"
 
 /obj/effect/shuttle_landmark/merchant/out
 	name = "Docking Bay"
