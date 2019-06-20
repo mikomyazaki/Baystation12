@@ -326,7 +326,7 @@
 /obj/effect/shuttle_landmark/ferry/out
 	name = "Docking Bay"
 	landmark_tag = "nav_ferry_out"
-	docking_controller = "centcom_shuttle_dock_airlock"
+	docking_controller = "rescue_shuttle_dock_airlock"
 
 //Merc
 

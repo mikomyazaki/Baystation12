@@ -20,6 +20,11 @@
 /obj/effect/shuttle_landmark/merc/deck4,
 /turf/space,
 /area/space)
+"af" = (
+/obj/effect/shuttle_landmark/ert/dock,
+/obj/effect/shuttle_landmark/ferry/out,
+/turf/space,
+/area/space)
 "ag" = (
 /obj/effect/floor_decal/corner/green{
 	dir = 9
@@ -10664,10 +10669,6 @@
 /area/maintenance/fourthdeck/port)
 "Kn" = (
 /obj/effect/shuttle_landmark/skipjack/dock,
-/turf/space,
-/area/space)
-"Ko" = (
-/obj/effect/shuttle_landmark/ert/dock,
 /turf/space,
 /area/space)
 "Kp" = (
@@ -41092,7 +41093,7 @@ Kh
 mR
 Tb
 TN
-Ko
+af
 aa
 aa
 aa
