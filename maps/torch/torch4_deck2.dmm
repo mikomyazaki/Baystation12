@@ -275,6 +275,18 @@
 "ax" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/maintenance/seconddeck/aftstarboard)
+"ay" = (
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 8;
+	frequency = 1441;
+	icon_state = "map_injector";
+	id = "co2_in";
+	injecting = 1;
+	pixel_y = 0;
+	use_power = 1
+	},
+/turf/simulated/floor/reinforced/carbon_dioxide,
+/area/engineering/atmos)
 "az" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/maintenance/seconddeck/forestarboard)
@@ -364,6 +376,18 @@
 /obj/item/weapon/stock_parts/circuitboard/aiupload,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/storage/tech)
+"aK" = (
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 8;
+	frequency = 1441;
+	icon_state = "map_injector";
+	id = "h2_in";
+	injecting = 1;
+	pixel_y = 0;
+	use_power = 1
+	},
+/turf/simulated/floor/reinforced/hydrogen,
+/area/engineering/atmos)
 "aL" = (
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1379;
@@ -716,6 +740,17 @@
 "bs" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/disposal)
+"bt" = (
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 4;
+	frequency = 1441;
+	icon_state = "map_injector";
+	id = "n2_in";
+	injecting = 1;
+	use_power = 1
+	},
+/turf/simulated/floor/reinforced/nitrogen,
+/area/engineering/atmos)
 "bu" = (
 /obj/machinery/disposal/deliveryChute,
 /obj/structure/disposalpipe/trunk{
@@ -837,6 +872,18 @@
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/seconddeck/forestarboard)
+"bH" = (
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 8;
+	frequency = 1441;
+	icon_state = "map_injector";
+	id = "n2o_in";
+	injecting = 1;
+	pixel_y = 0;
+	use_power = 1
+	},
+/turf/simulated/floor/reinforced/n20,
+/area/engineering/atmos)
 "bI" = (
 /turf/simulated/wall/prepainted,
 /area/maintenance/seconddeck/forestarboard)
@@ -1048,6 +1095,17 @@
 /obj/item/weapon/stock_parts/circuitboard/stationalert,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/storage/tech)
+"cb" = (
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 1;
+	frequency = 1441;
+	icon_state = "map_injector";
+	id = "o2_in";
+	injecting = 1;
+	use_power = 1
+	},
+/turf/simulated/floor/reinforced/oxygen,
+/area/engineering/atmos)
 "cc" = (
 /obj/machinery/shieldgen,
 /turf/simulated/floor/tiled/techfloor,
@@ -8890,17 +8948,6 @@
 /obj/machinery/pipedispenser/disposal,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/atmos)
-"tV" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
-	dir = 8;
-	frequency = 1441;
-	icon_state = "map_injector";
-	id = "co2_in";
-	pixel_y = 0;
-	use_power = 1
-	},
-/turf/simulated/floor/reinforced/carbon_dioxide,
-/area/engineering/atmos)
 "tW" = (
 /obj/machinery/mecha_part_fabricator,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -10192,16 +10239,6 @@
 "xD" = (
 /turf/simulated/floor/reinforced/nitrogen,
 /area/engineering/atmos)
-"xE" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
-	dir = 4;
-	frequency = 1441;
-	icon_state = "map_injector";
-	id = "n2_in";
-	use_power = 1
-	},
-/turf/simulated/floor/reinforced/nitrogen,
-/area/engineering/atmos)
 "xF" = (
 /obj/structure/table/steel,
 /obj/item/device/radio/intercom{
@@ -10587,17 +10624,6 @@
 /area/engineering/atmos)
 "yK" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/engineering/atmos)
-"yN" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
-	dir = 8;
-	frequency = 1441;
-	icon_state = "map_injector";
-	id = "n2o_in";
-	pixel_y = 0;
-	use_power = 1
-	},
-/turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "yO" = (
 /obj/structure/cable/green{
@@ -11766,16 +11792,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/seconddeck/aftport)
-"BC" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
-	dir = 1;
-	frequency = 1441;
-	icon_state = "map_injector";
-	id = "o2_in";
-	use_power = 1
-	},
-/turf/simulated/floor/reinforced/oxygen,
-/area/engineering/atmos)
 "BD" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
@@ -16087,17 +16103,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/seconddeck/elevator)
-"On" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
-	dir = 8;
-	frequency = 1441;
-	icon_state = "map_injector";
-	id = "h2_in";
-	pixel_y = 0;
-	use_power = 1
-	},
-/turf/simulated/floor/reinforced/hydrogen,
-/area/engineering/atmos)
 "Oo" = (
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/fuelbay)
@@ -40911,7 +40916,7 @@ oc
 oc
 xG
 sZ
-xE
+bt
 yy
 wM
 Fb
@@ -41724,7 +41729,7 @@ yC
 Ob
 Qc
 Tc
-BC
+cb
 vo
 CJ
 Fl
@@ -44542,13 +44547,13 @@ rc
 Md
 Ie
 No
-tV
+ay
 uE
 sZ
-On
+aK
 Pn
 sZ
-yN
+bH
 zx
 Aq
 BG
