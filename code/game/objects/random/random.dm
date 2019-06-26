@@ -317,8 +317,7 @@
 				/obj/item/weapon/storage/box/ammo/stunshells = 1,
 				/obj/item/ammo_magazine/pistol = 2,
 				/obj/item/ammo_magazine/smg_top = 2,
-				/obj/item/ammo_magazine/smg_top/rubber = 6,
-				/obj/item/ammo_magazine/pistol/throwback = 1)
+				/obj/item/ammo_magazine/smg_top/rubber = 6)
 
 /obj/random/action_figure
 	name = "random action figure"

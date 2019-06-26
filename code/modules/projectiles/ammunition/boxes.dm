@@ -201,11 +201,6 @@
 /obj/item/ammo_magazine/box/pistol/empty
 	initial_ammo = 0
 
-/obj/item/ammo_magazine/pistol/throwback
-	name = "pistol magazine"
-	caliber = CALIBER_PISTOL_ANTIQUE
-	ammo_type = /obj/item/ammo_casing/pistol/throwback
-
 /obj/item/ammo_magazine/box/emp/pistol
 	name = "ammunition box"
 	desc = "A box containing loose rounds of standard EMP ammo."

@@ -83,11 +83,11 @@
 	desc = "A product of one of thousands of illegal workshops from around the galaxy. Often replicas of ancient Earth handguns, these guns are usually found in hands of frontier colonists and pirates."
 	icon = 'icons/obj/guns/pistol_throwback.dmi'
 	icon_state = "pistol1"
-	magazine_type = /obj/item/ammo_magazine/pistol/throwback
+	magazine_type = /obj/item/ammo_magazine/pistol
 	accuracy_power = 5
 	one_hand_penalty = 2
 	fire_delay = 7
-	caliber = CALIBER_PISTOL_ANTIQUE
+	caliber = CALIBER_PISTOL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	var/base_icon = "pistol1"
 
