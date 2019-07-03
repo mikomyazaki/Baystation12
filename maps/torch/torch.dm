@@ -56,7 +56,7 @@
 	#include "items/clothing/terran-head.dm"
 	#include "items/clothing/terran-suit.dm"
 	#include "items/clothing/terran-under.dm"
-	
+
 	#include "items/weapon/storage/wallets.dm"
 
 	#include "job/torch_access.dm"
@@ -125,6 +125,7 @@
 	#include "z1_admin.dmm"
 	#include "z2_transit.dmm"
 	#include "../away/empty.dmm"
+	#include "../away/ascent/ascent.dm"
 	#include "../away/mining/mining.dm"
 	#include "../away/derelict/derelict.dm"
 	#include "../away/bearcat/bearcat.dm"
