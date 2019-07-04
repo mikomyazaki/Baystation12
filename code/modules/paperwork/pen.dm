@@ -113,6 +113,9 @@
 				var/trans = reagents.trans_to_mob(M, 30, CHEM_BLOOD)
 				admin_inject_log(user, M, src, contained_reagents, trans)
 
+	if(get_turf(user) != get_step(M, turn(M.dir,180)))
+		to_chat(M,"<span class='warning'>[user] stabs you with a pen!</span>")
+
 /*
  * Sleepy Pens
  */
