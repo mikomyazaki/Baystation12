@@ -294,6 +294,7 @@
 #define SPECIES_ALIEN       "Humanoid"
 #define SPECIES_ADHERENT    "Adherent"
 #define SPECIES_GOLEM       "Golem"
+#define SPECIES_SLIMEGOLEM       "Slime Golem"
 #define SPECIES_YEOSA       "Yeosa'Unathi"
 #define SPECIES_VATGROWN    "Vat-Grown Human"
 #define SPECIES_SPACER      "Space-Adapted Human"

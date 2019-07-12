@@ -32,6 +32,11 @@
 	death_message = "becomes completely motionless..."
 	genders = list(NEUTER)
 
+	free_languages =      list(
+		LANGUAGE_HUMAN_EURO,
+		LANGUAGE_CULT
+		)
+
 /datum/species/golem/handle_post_spawn(var/mob/living/carbon/human/H)
 	if(H.mind)
 		H.mind.reset()
@@ -43,3 +48,7 @@
 
 /datum/species/golem/post_organ_rejuvenate(var/obj/item/organ/org, var/mob/living/carbon/human/H)
 	org.status |= (ORGAN_BRITTLE|ORGAN_CRYSTAL)
+
+/datum/species/golem/slime
+	name = SPECIES_SLIMEGOLEM
+	free_languages =      list()

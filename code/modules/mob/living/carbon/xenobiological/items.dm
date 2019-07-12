@@ -245,6 +245,7 @@
 	unacidable = 1
 	plane = ABOVE_TURF_PLANE
 	layer = RUNE_LAYER
+	var/golem_type = "Golem"
 
 /obj/effect/golemrune/Initialize()
 	. = ..()
@@ -277,7 +278,7 @@
 	visible_message(SPAN_WARNING("A craggy humanoid figure coalesces into being!"))
 
 	var/mob/living/carbon/human/G = new(src.loc)
-	G.set_species("Golem")
+	G.set_species(golem_type)
 	G.key = ghost.key
 
 	var/obj/item/weapon/implant/translator/natural/I = new()
@@ -300,3 +301,5 @@
 			if(A)
 				to_chat(G, "Golem rune created in [A.name].")
 
+/obj/effect/golemrune/slime
+	golem_type = "Slime Golem"

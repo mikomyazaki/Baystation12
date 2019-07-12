@@ -1249,7 +1249,7 @@
 
 /datum/chemical_reaction/slime/golem/on_reaction(var/datum/reagents/holder)
 	..()
-	var/obj/effect/golemrune/Z = new /obj/effect/golemrune(get_turf(holder.my_atom))
+	var/obj/effect/golemrune/slime/Z = new /obj/effect/golemrune/slime(get_turf(holder.my_atom))
 	Z.announce_to_ghosts()
 
 //Sepia
