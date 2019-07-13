@@ -140,3 +140,7 @@
 		occupant.dropInto(loc)
 		occupant = null
 	. = ..()
+
+/obj/machinery/bodyscanner/emag_act(var/remaining_charges, var/mob/user)
+	emagged = !emagged
+	to_chat(user, "<span class='danger'>You [emagged ? "disable" : "enable"] \the [src]'s scanner shielding.</span>")

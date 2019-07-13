@@ -109,6 +109,9 @@
 		
 		stored_scan_subject = connected.occupant
 		user.visible_message("<span class='notice'>\The [user] performs a scan of \the [connected.occupant] using \the [connected].</span>")
+
+		if (connected.emagged)
+			SSradiation.radiate(src, 2)
 		return TOPIC_REFRESH
 
 	if (href_list["print"])
