@@ -40,3 +40,9 @@
 	set of law-like instructions to follow. This kit contains a dose of Mindbreaker Toxin."
 	item_cost = 20
 	path = /obj/item/weapon/storage/box/syndie_kit/imp_imprinting
+
+/datum/uplink_item/item/implants/imp_translator
+	name = "Translator Implant"
+	desc = "An implant for undercover operatives who need to pick up a new language in a hurry. Exposure to unknown languages will cause the implant to learn this language, granting you fluency."
+	item_cost = 15
+	path = /obj/item/weapon/storage/box/syndie_kit/imp_translator

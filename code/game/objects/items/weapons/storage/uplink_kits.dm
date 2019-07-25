@@ -36,6 +36,9 @@
 		/obj/item/weapon/reagent_containers/hypospray/autoinjector/mindbreaker
 		)
 
+/obj/item/weapon/storage/box/syndie_kit/imp_translator
+	startswith = list(/obj/item/weapon/implanter/translator)
+
 // Space suit uplink kit
 /obj/item/weapon/storage/backpack/satchel/syndie_kit/space
 	//name = "\improper EVA gear pack"
