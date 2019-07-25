@@ -163,3 +163,8 @@
 	name = "Explosive Harpoon"
 	item_cost = 12
 	path = /obj/item/weapon/material/harpoon/bomb
+
+/datum/uplink_item/item/visible_weapons/combat_knife
+	name = "Tactical Knife"
+	item_cost = 10
+	path = /obj/item/weapon/material/knife/combat
