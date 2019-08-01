@@ -456,8 +456,8 @@
 				update_icon()
 				return TRUE
 
-		if((stat & BROKEN) || (hacker && !hacker.hacked_apcs_hidden))
-			to_chat(user, SPAN_WARNING("The cover appears broken or stuck."))
+		if(hacker && !hacker.hacked_apcs_hidden)
+			to_chat(user, SPAN_WARNING("The cover appears stuck."))
 			return TRUE
 		if(coverlocked && !(stat & MAINT))
 			to_chat(user, SPAN_WARNING("The cover is locked and cannot be opened."))
