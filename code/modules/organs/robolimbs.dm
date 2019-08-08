@@ -32,6 +32,13 @@ var/datum/robolimb/basic_robolimb
 	icon = 'icons/mob/human_races/cyberlimbs/bishop/bishop_main.dmi'
 	unavailable_at_fab = 1
 
+/datum/robolimb/bishop/rook
+	company = "Bishop Rook"
+	desc = "This limb has a polished metallic casing with holographic face emitter."
+	icon = 'icons/mob/human_races/cyberlimbs/bishop/bishop_rook.dmi'
+	has_eyes = FALSE
+	unavailable_at_fab = 1
+
 /datum/robolimb/bishop/alt
 	company = "Bishop Alt."
 	icon = 'icons/mob/human_races/cyberlimbs/bishop/bishop_alt.dmi'
@@ -58,8 +65,15 @@ var/datum/robolimb/basic_robolimb
 
 /datum/robolimb/hephaestus/titan
 	company = "Hephaestus Titan"
-	desc = "This limb has a casing of olive drab, providing a reinforced house look."
+	desc = "This limb has a casing of an olive drab finish, providing a reinforced housing look."
 	icon = 'icons/mob/human_races/cyberlimbs/hephaestus/hephaestus_titan.dmi'
+	has_eyes = FALSE
+	unavailable_at_fab = 1
+
+/datum/robolimb/hephaestus/hermes
+	company = "Hephaestus Hermes"
+	desc = "This limb has a casing of a simple metallic finish, though lacking in reinforced housing to the Titan."
+	icon = 'icons/mob/human_races/cyberlimbs/hephaestus/hephaestus_hermes.dmi'
 	has_eyes = FALSE
 	unavailable_at_fab = 1
 
@@ -82,6 +96,12 @@ var/datum/robolimb/basic_robolimb
 	company = "Xion"
 	desc = "This limb has a minimalist black and red casing."
 	icon = 'icons/mob/human_races/cyberlimbs/xion/xion_main.dmi'
+
+/datum/robolimb/xion/econo
+	company = "Xion Econ"
+	desc = "This limb has a minimalist black and red casing, though appears more skeletal and mechanical"
+	icon = 'icons/mob/human_races/cyberlimbs/xion/xion_econo.dmi'
+	unavailable_at_fab = 1
 
 /datum/robolimb/xion/alt
 	company = "Xion Alt."
@@ -106,6 +126,12 @@ var/datum/robolimb/basic_robolimb
 	desc = "This limb features sleek black and white polymers."
 	icon = 'icons/mob/human_races/cyberlimbs/wardtakahashi/wardtakahashi_main.dmi'
 	can_eat = 1
+	unavailable_at_fab = 1
+
+/datum/robolimb/spirit
+	company = "Ward-Takahashi Spirit"
+	desc = "This limb features sleek black and white polymers and a faceless humanoid head evoking spirtual nature"
+	icon = 'icons/mob/human_races/cyberlimbs/wardtakahashi/wardtakahashi_spirit.dmi'
 	unavailable_at_fab = 1
 
 /datum/robolimb/economy
@@ -137,7 +163,6 @@ var/datum/robolimb/basic_robolimb
 	icon = 'icons/mob/human_races/cyberlimbs/morpheus/morpheus_atlantis.dmi'
 	applies_to_part = list(BP_HEAD)
 	unavailable_at_fab = 1
-	has_eyes = FALSE
 
 /datum/robolimb/mantis
 	company = "Morpheus Mantis"
