@@ -21,11 +21,15 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/thirddeck)
 "ac" = (
-/obj/effect/landmark{
-	name = "carpspawn"
+/obj/effect/floor_decal/industrial/warning/corner,
+/obj/machinery/computer/HolodeckControl{
+	dir = 8;
+	icon_state = "computer";
+	linkedholodeck_area = /area/holodeck/alphadeck;
+	linkedholodeck_landmark_id = "alphadeck";
 	},
-/turf/space,
-/area/space)
+/turf/simulated/floor/tiled,
+/area/holocontrol)
 "ad" = (
 /turf/simulated/wall/r_wall/hull,
 /area/vacant/brig)
@@ -2119,6 +2123,14 @@
 /obj/effect/wallframe_spawn/no_grille,
 /turf/simulated/floor/plating,
 /area/crew_quarters/galley)
+"ez" = (
+/obj/effect/landmark{
+	name = "alphadeck"
+	},
+/turf/simulated/floor/reinforced{
+	name = "Holodeck Projector Floor"
+	},
+/area/holodeck/alphadeck)
 "eA" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/monotile,
@@ -6697,16 +6709,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/thirddeck)
-"nt" = (
-/obj/effect/floor_decal/industrial/warning/corner,
-/obj/machinery/computer/HolodeckControl{
-	icon_state = "computer";
-	dir = 8;
-	linkedholodeck_area = /area/holodeck/alphadeck;
-	programs_list_id = "TorchMainPrograms"
-	},
-/turf/simulated/floor/tiled,
-/area/holocontrol)
 "nu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -27028,7 +27030,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -28065,7 +28067,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -28258,7 +28260,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -28435,7 +28437,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -28625,7 +28627,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -29890,7 +29892,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -30438,7 +30440,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -31101,7 +31103,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -33527,7 +33529,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -34888,7 +34890,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aU
 aU
 aO
@@ -36498,7 +36500,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -36754,7 +36756,7 @@ BV
 BV
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -38181,7 +38183,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -38513,7 +38515,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -39323,7 +39325,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -39398,7 +39400,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -40400,7 +40402,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -44198,7 +44200,7 @@ kj
 kZ
 gN
 my
-nt
+ac
 ol
 pk
 om
@@ -44604,7 +44606,7 @@ hA
 hA
 hA
 hA
-hA
+ez
 gE
 Bg
 AR
@@ -45041,7 +45043,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -45382,7 +45384,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -46196,7 +46198,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -47664,7 +47666,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -48439,7 +48441,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 nw
 aa
@@ -48858,7 +48860,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -49019,7 +49021,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa
@@ -52269,7 +52271,7 @@ aa
 aa
 aa
 aa
-ac
+aa
 aa
 aa
 aa

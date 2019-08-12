@@ -261,6 +261,7 @@
 #include "code\datums\extensions\extensions.dm"
 #include "code\datums\extensions\fake_data.dm"
 #include "code\datums\extensions\fusion_plant.dm"
+#include "code\datums\extensions\holographic.dm"
 #include "code\datums\extensions\interactive.dm"
 #include "code\datums\extensions\label.dm"
 #include "code\datums\extensions\penetration.dm"

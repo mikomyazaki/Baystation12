@@ -460,10 +460,3 @@
 		melee_damage_upper = initial(melee_damage_upper)
 		environment_smash = initial(environment_smash)
 		destroy_surroundings = initial(destroy_surroundings)
-
-/mob/living/simple_animal/hostile/carp/holodeck/gib()
-	death()
-
-/mob/living/simple_animal/hostile/carp/holodeck/death()
-	..(null, "fades away!", "You have been destroyed.")
-	qdel(src)
