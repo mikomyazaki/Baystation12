@@ -20,7 +20,7 @@
 		/obj/item/device/plunger/robot,
 		/obj/item/weapon/crowbar
 	)
-	emag = /obj/item/weapon/reagent_containers/spray
+	emag = list(/obj/item/weapon/reagent_containers/spray)
 	skills = list(
 		SKILL_EVA    = SKILL_MAX,
 		SKILL_MECH   = HAS_PERK,
@@ -29,8 +29,9 @@
 
 /obj/item/weapon/robot_module/janitor/finalize_emag()
 	. = ..()
-	emag.reagents.add_reagent(/datum/reagent/lube, 250)
-	emag.SetName("Lube spray")
+	var/obj/item/weapon/reagent_containers/spray/O = locate() in emag
+	O.reagents.add_reagent(/datum/reagent/lube, 250)
+	O.SetName("Lube spray")
 
 /obj/item/weapon/robot_module/janitor/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	..()

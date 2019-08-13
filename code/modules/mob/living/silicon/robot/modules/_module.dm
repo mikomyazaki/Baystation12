@@ -35,7 +35,7 @@
 	var/list/added_networks = list()
 
 	// Gear lists/types.
-	var/obj/item/emag
+	var/list/obj/emag = list()
 	// Please note that due to how locate() works, equipments that are subtypes of other equipment need to be placed after their closest parent
 	var/list/equipment = list()
 	var/list/synths = list()
@@ -106,15 +106,17 @@
 	return
 
 /obj/item/weapon/robot_module/proc/build_emag()
-	if(ispath(emag))
-		emag = new emag(src)
+	for(var/obj/O in emag)
+		if(ispath(O))
+			O = new O(src)
 
 /obj/item/weapon/robot_module/proc/finalize_emag()
-	if(istype(emag))
-		emag.canremove = FALSE
-	else
-		log_debug("Invalid var type in [type] emag creation - [emag]")
-		emag = null
+	for(var/obj/item/O in emag)
+		if(istype(O))
+			O.canremove = FALSE
+		else
+			log_debug("Invalid var type in [type] emag creation - [O]")
+			O = null
 
 /obj/item/weapon/robot_module/proc/Reset(var/mob/living/silicon/robot/R)
 	remove_camera_networks(R)
@@ -130,7 +132,7 @@
 /obj/item/weapon/robot_module/Destroy()
 	QDEL_NULL_LIST(equipment)
 	QDEL_NULL_LIST(synths)
-	QDEL_NULL(emag)
+	QDEL_NULL_LIST(emag)
 	QDEL_NULL(jetpack)
 	var/mob/living/silicon/robot/R = loc
 	if(istype(R) && R.module == src)
@@ -142,7 +144,8 @@
 		for(var/obj/O in equipment)
 			O.emp_act(severity)
 	if(emag)
-		emag.emp_act(severity)
+		for(var/obj/O in emag)
+			O.emp_act(severity)
 	if(synths)
 		for(var/datum/matter_synth/S in synths)
 			S.emp_act(severity)

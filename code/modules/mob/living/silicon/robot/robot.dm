@@ -787,10 +787,11 @@
 		else
 			dat += text("[obj]: <A HREF=?src=\ref[src];act=\ref[obj]>Activate</A><BR>")
 	if (emagged)
-		if(activated(module.emag))
-			dat += text("[module.emag]: <B>Activated</B><BR>")
-		else
-			dat += text("[module.emag]: <A HREF=?src=\ref[src];act=\ref[module.emag]>Activate</A><BR>")
+		for(var/O in module.emag)
+			if(activated(O))
+				dat += text("[O]: <B>Activated</B><BR>")
+			else
+				dat += text("[O]: <A HREF=?src=\ref[src];act=\ref[O]>Activate</A><BR>")
 /*
 		if(activated(obj))
 			dat += text("[obj]: \[<B>Activated</B> | <A HREF=?src=\ref[src];deact=\ref[obj]>Deactivate</A>\]<BR>")
@@ -821,7 +822,7 @@
 		if (!istype(O))
 			return 1
 
-		if(!((O in module.equipment) || (O == src.module.emag)))
+		if(!((O in module.equipment) || (O in module.emag)))
 			return 1
 
 		if(activated(O))

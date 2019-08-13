@@ -14,7 +14,7 @@
 		/obj/item/weapon/crowbar,
 		/obj/item/device/scanner/health
 	)
-	emag = /obj/item/weapon/melee/energy/sword
+	emag = list(/obj/item/weapon/melee/energy/sword)
 	skills = list(
 		SKILL_COMBAT       = SKILL_ADEPT,
 		SKILL_MEDICAL      = SKILL_ADEPT,

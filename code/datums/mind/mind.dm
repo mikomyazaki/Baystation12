@@ -415,17 +415,18 @@
 				var/mob/living/silicon/robot/R = current
 				if (istype(R))
 					R.emagged = 0
-					if (R.activated(R.module.emag))
-						R.module_active = null
-					if(R.module_state_1 == R.module.emag)
-						R.module_state_1 = null
-						R.module.emag.forceMove(null)
-					else if(R.module_state_2 == R.module.emag)
-						R.module_state_2 = null
-						R.module.emag.forceMove(null)
-					else if(R.module_state_3 == R.module.emag)
-						R.module_state_3 = null
-						R.module.emag.forceMove(null)
+					for(var/obj/O in R.module.emag)
+						if (R.activated(O))
+							R.module_active = null
+						if(R.module_state_1 == O)
+							R.module_state_1 = null
+							O.forceMove(null)
+						else if(R.module_state_2 == O)
+							R.module_state_2 = null
+							O.forceMove(null)
+						else if(R.module_state_3 == O)
+							R.module_state_3 = null
+							O.forceMove(null)
 					log_admin("[key_name_admin(usr)] has unemag'ed [R].")
 
 			if("unemagcyborgs")
@@ -434,17 +435,18 @@
 					for (var/mob/living/silicon/robot/R in ai.connected_robots)
 						R.emagged = 0
 						if (R.module)
-							if (R.activated(R.module.emag))
-								R.module_active = null
-							if(R.module_state_1 == R.module.emag)
-								R.module_state_1 = null
-								R.module.emag.forceMove(null)
-							else if(R.module_state_2 == R.module.emag)
-								R.module_state_2 = null
-								R.module.emag.forceMove(null)
-							else if(R.module_state_3 == R.module.emag)
-								R.module_state_3 = null
-								R.module.emag.forceMove(null)
+							for(var/obj/O in R.module.emag)
+								if (R.activated(O))
+									R.module_active = null
+								if(R.module_state_1 == O)
+									R.module_state_1 = null
+									O.forceMove(null)
+								else if(R.module_state_2 == O)
+									R.module_state_2 = null
+									O.forceMove(null)
+								else if(R.module_state_3 == O)
+									R.module_state_3 = null
+									O.forceMove(null)
 					log_admin("[key_name_admin(usr)] has unemag'ed [ai]'s Cyborgs.")
 
 	else if (href_list["common"])

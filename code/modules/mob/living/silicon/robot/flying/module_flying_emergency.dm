@@ -28,7 +28,7 @@
 		/obj/item/stack/medical/splint
 	)
 	synths = list(/datum/matter_synth/medicine = 15000)
-	emag = /obj/item/weapon/reagent_containers/spray
+	emag = list(/obj/item/weapon/reagent_containers/spray)
 	skills = list(
 		SKILL_ANATOMY      = SKILL_BASIC,
 		SKILL_MEDICAL      = SKILL_PROF,
@@ -40,8 +40,10 @@
 
 /obj/item/weapon/robot_module/flying/emergency/finalize_emag()
 	. = ..()
-	emag.reagents.add_reagent(/datum/reagent/acid/polyacid, 250)
-	emag.SetName("Polyacid spray")
+	var/obj/item/weapon/reagent_containers/spray/O = locate() in emag
+	if(O.reagents)
+		O.reagents.add_reagent(/datum/reagent/acid/polyacid, 250)
+		O.SetName("Polyacid spray")
 
 /obj/item/weapon/robot_module/flying/emergency/finalize_equipment()
 	. = ..()

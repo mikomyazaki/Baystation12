@@ -32,7 +32,11 @@
 		/obj/item/device/megaphone,
 		/obj/item/stack/package_wrap/cyborg
 	)
-	emag = /obj/item/weapon/stamp/chameleon
+	emag = list(
+		/obj/item/weapon/stamp/chameleon,
+		/obj/item/weapon/pen/chameleon
+		)
+
 	synths = list(/datum/matter_synth/package_wrap)
 	skills = list(
 		SKILL_BUREAUCRACY         = SKILL_PROF,

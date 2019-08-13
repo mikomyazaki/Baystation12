@@ -48,7 +48,7 @@
 		/datum/matter_synth/plasteel = 	10000,
 		/datum/matter_synth/wire
 	)
-	emag = /obj/item/weapon/melee/baton/robot/electrified_arm
+	emag = list(/obj/item/weapon/melee/baton/robot/electrified_arm)
 	skills = list(
 		SKILL_ATMOS        = SKILL_PROF,
 		SKILL_ENGINES      = SKILL_PROF,

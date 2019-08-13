@@ -47,7 +47,7 @@
 	synths = list(
 		/datum/matter_synth/medicine = 10000,
 	)
-	emag = /obj/item/weapon/reagent_containers/spray
+	emag = list(/obj/item/weapon/reagent_containers/spray)
 	skills = list(
 		SKILL_ANATOMY     = SKILL_PROF,
 		SKILL_MEDICAL     = SKILL_ADEPT,
@@ -69,8 +69,10 @@
 
 /obj/item/weapon/robot_module/medical/surgeon/finalize_emag()
 	. = ..()
-	emag.reagents.add_reagent(/datum/reagent/acid/polyacid, 250)
-	emag.SetName("Polyacid spray")
+	var/obj/item/weapon/reagent_containers/spray/O = locate() in emag
+	if(O.reagents)
+		O.reagents.add_reagent(/datum/reagent/acid/polyacid, 250)
+		O.SetName("Polyacid spray")
 
 /obj/item/weapon/robot_module/medical/surgeon/finalize_synths()
 	. = ..()
@@ -143,8 +145,10 @@
 
 /obj/item/weapon/robot_module/medical/crisis/finalize_emag()
 	. = ..()
-	emag.reagents.add_reagent(/datum/reagent/acid/polyacid, 250)
-	emag.SetName("Polyacid spray")
+	var/obj/item/weapon/reagent_containers/spray/O = locate() in emag
+	if(O.reagents)
+		O.reagents.add_reagent(/datum/reagent/acid/polyacid, 250)
+		O.SetName("Polyacid spray")
 
 /obj/item/weapon/robot_module/medical/crisis/finalize_synths()
 	. = ..()

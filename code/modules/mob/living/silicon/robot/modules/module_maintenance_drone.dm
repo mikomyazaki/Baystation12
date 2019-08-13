@@ -43,7 +43,7 @@
 		/datum/matter_synth/plastic = 1000,
 		/datum/matter_synth/wire =    30
 	)
-	emag = /obj/item/weapon/gun/energy/plasmacutter
+	emag = list(/obj/item/weapon/gun/energy/plasmacutter)
 	skills = list(
 		SKILL_ATMOS        = SKILL_EXPERT,
 		SKILL_ENGINES      = SKILL_EXPERT,
@@ -58,7 +58,8 @@
 
 /obj/item/weapon/robot_module/drone/finalize_emag()
 	. = ..()
-	emag.SetName("Plasma Cutter")
+	var/obj/item/weapon/gun/energy/plasmacutter/O = locate() in emag
+	O.SetName("Plasma Cutter")
 
 /obj/item/weapon/robot_module/drone/finalize_synths()
 	. = ..()

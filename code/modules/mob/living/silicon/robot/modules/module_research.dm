@@ -32,7 +32,7 @@
 	synths = list(
 		/datum/matter_synth/nanite = 10000
 	)
-	emag = /obj/prefab/hand_teleporter
+	emag = list(/obj/prefab/hand_teleporter)
 	skills = list(
 		SKILL_BUREAUCRACY         = SKILL_EXPERT,
 		SKILL_FINANCE             = SKILL_EXPERT,

@@ -446,12 +446,13 @@
 	dat += tools
 
 	if (emagged)
-		if (!module.emag)
-			dat += text("<B>Resource depleted</B><BR>")
-		else if(activated(module.emag))
-			dat += text("[module.emag]: <B>Activated</B><BR>")
-		else
-			dat += text("[module.emag]: <A HREF=?src=\ref[src];act=\ref[module.emag]>Activate</A><BR>")
+		for (var/O in module.emag)
+			if (!O)
+				dat += text("<B>Resource depleted</B><BR>")
+			else if(activated(O))
+				dat += text("[O]: <B>Activated</B><BR>")
+			else
+				dat += text("[O]: <A HREF=?src=\ref[src];act=\ref[O]>Activate</A><BR>")
 
 	dat += resources
 

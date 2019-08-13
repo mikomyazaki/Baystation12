@@ -31,7 +31,7 @@
 		/obj/item/device/scanner/mining,
 		/obj/item/weapon/crowbar
 	)
-	emag = /obj/item/weapon/gun/energy/plasmacutter
+	emag = list(/obj/item/weapon/gun/energy/plasmacutter)
 	skills = list(
 		SKILL_PILOT        = SKILL_EXPERT,
 		SKILL_EVA          = SKILL_PROF,

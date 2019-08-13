@@ -57,7 +57,7 @@
 		/obj/item/weapon/crowbar,
 		/obj/item/device/hailer
 	)
-	emag = /obj/item/weapon/gun/energy/laser/mounted
+	emag = list(/obj/item/weapon/gun/energy/laser/mounted)
 
 /obj/item/weapon/robot_module/security/combat
 	name = "combat robot module"

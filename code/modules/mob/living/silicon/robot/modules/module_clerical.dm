@@ -51,7 +51,7 @@
 		/obj/item/weapon/tray/robotray,
 		/obj/item/weapon/reagent_containers/borghypo/service
 	)
-	emag = /obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer
+	emag = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer)
 	skills = list(
 		SKILL_BUREAUCRACY         = SKILL_PROF,
 		SKILL_COMPUTER            = SKILL_EXPERT,
@@ -71,9 +71,10 @@
 /obj/item/weapon/robot_module/clerical/butler/finalize_emag()
 	. = ..()
 	if(emag)
-		var/datum/reagents/R = emag.create_reagents(50)
+		var/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer/O = locate() in emag
+		var/datum/reagents/R = O.create_reagents(50)
 		R.add_reagent(/datum/reagent/chloralhydrate/beer2, 50)
-		emag.SetName("Mickey Finn's Special Brew")
+		O.SetName("Mickey Finn's Special Brew")
 
 /obj/item/weapon/robot_module/general/butler/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	..()
@@ -109,7 +110,10 @@
 		/obj/item/weapon/crowbar,
 		/obj/item/stack/package_wrap/cyborg
 	)
-	emag = /obj/item/weapon/stamp/chameleon
+	emag = list(
+		/obj/item/weapon/stamp/chameleon,
+		/obj/item/weapon/pen/chameleon
+		)
 	synths = list(
 		/datum/matter_synth/package_wrap
 	)
