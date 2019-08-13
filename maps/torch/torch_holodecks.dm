@@ -15,7 +15,8 @@
 			"thunderdomecourt",
 			"volleyball",
 			"temple",
-			"plaza"
+			"plaza",
+			"firingrange"
 		)
 
 
