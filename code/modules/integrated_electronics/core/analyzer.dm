@@ -9,7 +9,13 @@
 
 /obj/item/device/integrated_electronics/analyzer/afterattack(var/atom/A, var/mob/living/user)
 	. = ..()
+
 	if(istype(A, /obj/item/device/electronic_assembly))
+		var/obj/item/device/electronic_assembly/E = A
+		for(var/obj/item/integrated_circuit/manipulation/hatchlock/shielded/S in E.assembly_components)
+			if(S.lock_enabled)
+				to_chat(user, SPAN_NOTICE("The analyzer fails to scan [A]!"))
+				return
 		var/saved = "[A.name] analyzed! On circuit printers with cloning enabled, you may use the code below to clone the circuit:<br><br><code>[SScircuit.save_electronic_assembly(A)]</code>"
 		if(saved)
 			to_chat(user, "<span class='notice'>You scan [A].</span>")

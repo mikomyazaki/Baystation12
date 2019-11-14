@@ -734,3 +734,8 @@
 		set_pin_data(IC_OUTPUT, 1, lock_enabled)
 		push_data()
 		activate_pin(2)
+
+/obj/item/integrated_circuit/manipulation/hatchlock/shielded
+	name = "shielded hatch lock"
+	desc = "An electronically controlled lock for the assembly's maintenance hatch. Contains additional shielding to protect the device from analyzers when locked."
+	complexity = 8
