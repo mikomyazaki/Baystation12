@@ -90,6 +90,7 @@
 	icon_state = "reinforced"
 
 /turf/simulated/floor/holofloor/space/New()
+	..()
 	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
 /turf/simulated/floor/holofloor/beach
@@ -247,12 +248,10 @@
 	var/item_color
 
 /obj/item/weapon/holo/esword/green
-	New()
-		item_color = "green"
+	item_color = "green"
 
 /obj/item/weapon/holo/esword/red
-	New()
-		item_color = "red"
+	item_color = "red"
 
 /obj/item/weapon/holo/esword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	. = ..()
@@ -266,6 +265,7 @@
 	return active ? ..() : 0
 
 /obj/item/weapon/holo/esword/New()
+	..()
 	item_color = pick("red","blue","green","purple")
 
 /obj/item/weapon/holo/esword/attack_self(mob/living/user as mob)
@@ -377,10 +377,6 @@
 	to_chat(user, "The AI is not to interact with these devices!")
 	return
 
-/obj/machinery/readybutton/New()
-	..()
-
-
 /obj/machinery/readybutton/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
@@ -460,10 +456,3 @@
 		melee_damage_upper = initial(melee_damage_upper)
 		environment_smash = initial(environment_smash)
 		destroy_surroundings = initial(destroy_surroundings)
-
-/mob/living/simple_animal/hostile/carp/holodeck/gib()
-	death()
-
-/mob/living/simple_animal/hostile/carp/holodeck/death()
-	..(null, "fades away!", "You have been destroyed.")
-	qdel(src)

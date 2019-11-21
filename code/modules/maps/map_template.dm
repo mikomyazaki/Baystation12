@@ -139,10 +139,13 @@
 
 	var/list/atoms_to_initialise = list()
 	var/shuttle_state = pre_init_shuttles()
+	var/datum/map_load_metadata/M
+	var/list/metadata = list()
 
 	var/initialized_areas_by_type = list()
 	for (var/mappath in mappaths)
-		var/datum/map_load_metadata/M = maploader.load_map(file(mappath), T.x, T.y, T.z, cropMap=TRUE, clear_contents=(template_flags & TEMPLATE_FLAG_CLEAR_CONTENTS), initialized_areas_by_type = initialized_areas_by_type)
+		M = maploader.load_map(file(mappath), T.x, T.y, T.z, cropMap=TRUE, clear_contents=(template_flags & TEMPLATE_FLAG_CLEAR_CONTENTS), initialized_areas_by_type = initialized_areas_by_type)
+		metadata += M
 		if (M)
 			atoms_to_initialise += M.atoms_to_initialise
 		else
@@ -156,7 +159,7 @@
 	log_game("[name] loaded at at [T.x],[T.y],[T.z]")
 	loaded++
 
-	return TRUE
+	return metadata
 
 /datum/map_template/proc/after_load(z)
 	for(var/obj/effect/landmark/map_load_mark/mark in subtemplates_to_spawn)
