@@ -430,6 +430,7 @@
 	icon_state = "blastctrl"
 	var/holotarget_tag = null
 	var/area/currentarea = null
+	var/list/obj/effect/landmark/target_landmarks = list()
 
 	anchored = 1.0
 	idle_power_usage = 2
@@ -445,16 +446,24 @@
 	for(var/mob/living/carbon/human/dummy/holotarget/H in currentarea)
 		if(holotarget_tag == H.target_tag)
 			if(has_extension(H, /datum/extension/holographic))
-				H.Destroy()
+				H.rejuvenate()
+				playsound(src.loc, 'sound/effects/holo_beep.ogg', 25, 2)
 	
 	for(var/obj/effect/decal/cleanable/blood/B in currentarea)
 		qdel(B)
 
 	for(var/obj/effect/landmark/L in currentarea)
 		if(L.name == holotarget_tag)
-			var/mob/living/carbon/human/dummy/holotarget/H = new /mob/living/carbon/human/dummy/holotarget(L.loc)
-			H.target_tag = L.name
-			playsound(L.loc, 'sound/effects/holo_beep.ogg', 25, 2)
+			target_landmarks += L
+
+	for(var/obj/effect/L in target_landmarks) // Find a linked landmark that does not have a target dummy
+		if(instances_of_type_in_list(/mob/living/carbon/human/dummy/holotarget,currentarea) < target_landmarks.len)
+			var/mob/living/carbon/human/dummy/holotarget/target_exists = locate() in get_turf(L)
+			if(!target_exists)
+				var/mob/living/carbon/human/dummy/holotarget/H = new /mob/living/carbon/human/dummy/holotarget(L.loc)
+				H.target_tag = L.name
+		else
+			break
 	return TRUE
 
 /mob/living/carbon/human/dummy/holotarget
@@ -462,7 +471,6 @@
 
 /mob/living/carbon/human/dummy/holotarget/Initialize()
 	. = ..()
-
 	set_extension(src, /datum/extension/holographic)
 
 //Holocarp

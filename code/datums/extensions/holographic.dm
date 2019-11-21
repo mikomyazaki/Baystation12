@@ -7,6 +7,7 @@
 
 /datum/extension/holographic/New(var/atom/holder)
 	..()
+
 	holder.alpha *= holo_alpha
 
 	if(ismovable(holder))
@@ -56,6 +57,12 @@
 	if(get_area(old_location) != get_area(new_location))
 		DestroyHolographicContents(mover)
 		qdel(mover)
+
+/datum/extension/holographic/proc/attackby(obj/item/W as obj, mob/user as mob)
+	if(is_type_in_list(src,list(/obj/structure,/obj/machinery)))
+		if(W.iswrench() || W.isscrewdriver() || W.iscrowbar() || W.iswirecutter()) // don't want tools interacting with holographic machinery/structures, this should cover deconstruction actions
+			return
+	..()
 
 /datum/extension/holographic/proc/dismantle() // disable dismantling holographic objects
 	return TRUE
