@@ -421,6 +421,50 @@
 	for(var/mob/M in currentarea)
 		to_chat(M, "FIGHT!")
 
+// Firing Range Objects
+
+/obj/machinery/reset_holotarget
+	name = "Reset Holo-targets"
+	desc = "This button is used to replace your holotarget, and clear away the mess."
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "blastctrl"
+	var/holotarget_tag = null
+	var/area/currentarea = null
+
+	anchored = 1.0
+	idle_power_usage = 2
+	active_power_usage = 6
+	power_channel = ENVIRON
+
+/obj/machinery/reset_holotarget/physical_attack_hand()
+	currentarea = get_area(src)
+	if(!currentarea)
+		qdel(src)
+		return TRUE
+
+	for(var/mob/living/carbon/human/dummy/holotarget/H in currentarea)
+		if(holotarget_tag == H.target_tag)
+			if(has_extension(H, /datum/extension/holographic))
+				H.Destroy()
+	
+	for(var/obj/effect/decal/cleanable/blood/B in currentarea)
+		qdel(B)
+
+	for(var/obj/effect/landmark/L in currentarea)
+		if(L.name == holotarget_tag)
+			var/mob/living/carbon/human/dummy/holotarget/H = new /mob/living/carbon/human/dummy/holotarget(L.loc)
+			H.target_tag = L.name
+			playsound(L.loc, 'sound/effects/holo_beep.ogg', 25, 2)
+	return TRUE
+
+/mob/living/carbon/human/dummy/holotarget
+	var/target_tag = null
+
+/mob/living/carbon/human/dummy/holotarget/Initialize()
+	. = ..()
+
+	set_extension(src, /datum/extension/holographic)
+
 //Holocarp
 
 /mob/living/simple_animal/hostile/carp/holodeck

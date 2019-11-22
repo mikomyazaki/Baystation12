@@ -7,15 +7,16 @@
 			"courtroom",
 			"desert",
 			"emptycourt",
+			"firingrange",
 			"meetinghall",
 			"picnicarea",
+			"plaza",
 			"snowfield",
 			"space",
+			"temple",
 			"theatre",
 			"thunderdomecourt",
-			"volleyball",
-			"temple",
-			"plaza"
+			"volleyball"
 		)
 
 

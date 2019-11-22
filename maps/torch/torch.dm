@@ -179,6 +179,7 @@
 	#include "game/holodeck/thunderdomecourt/thunderdomecourt.dm"
 	#include "game/holodeck/volleyball/volleyball.dm"
 	#include "game/holodeck/wildlife/wildlife.dm"
+	#include "game/holodeck/firingrange/firingrange.dm"
 
 	#include "../../code/datums/music_tracks/chasing_time.dm"
 
