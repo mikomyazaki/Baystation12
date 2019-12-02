@@ -29,6 +29,7 @@
 #define SS_PRIORITY_TRADE          10  // Adds/removes traders.
 #define SS_PRIORITY_GHOST_IMAGES   10  // Updates ghost client images.
 #define SS_PRIORITY_ZCOPY          10   // Builds appearances for Z-Mimic.
+#define SS_PRIORITY_PING           10	// Client ping.
 
 // SS_BACKGROUND
 #define SS_PRIORITY_OBJECTS       100  // processing_objects processing.
