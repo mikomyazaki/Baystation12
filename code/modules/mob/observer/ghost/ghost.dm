@@ -370,6 +370,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
 		return
 
+	if(mind.has_been_mouse)
+		to_chat(src,SPAN_WARNING("You have already been a mouse, respawn as something else instead!"))
+		return
+
 	if(!MayRespawn(1, ANIMAL_SPAWN_DELAY))
 		return
 
@@ -380,7 +384,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/response = alert(src, "Are you -sure- you want to become a mouse?","Are you sure you want to squeek?","Squeek!","Nope!")
 	if(response != "Squeek!") return  //Hit the wrong key...again.
-
 
 	//find a viable mouse candidate
 	var/mob/living/simple_animal/mouse/host
@@ -400,6 +403,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		announce_ghost_joinleave(src, 0, "They are now a mouse.")
 		host.ckey = src.ckey
 		host.status_flags |= NO_ANTAG
+		host.mind.has_been_mouse = TRUE
 		to_chat(host, "<span class='info'>You are now a mouse. Try to avoid interaction with players, and do not give hints away that you are more than a simple rodent.</span>")
 /mob/observer/ghost/verb/view_manfiest()
 	set name = "Show Crew Manifest"

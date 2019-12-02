@@ -50,6 +50,7 @@
 	var/list/datum/objective/special_verbs = list()
 
 	var/has_been_rev = 0//Tracks if this mind has been a rev or not
+	var/has_been_mouse = FALSE
 
 	var/faction 			//associated faction
 	var/datum/changeling/changeling		//changeling holder
