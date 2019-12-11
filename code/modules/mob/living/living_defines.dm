@@ -52,3 +52,5 @@
 	var/obj/screen/cells = null
 
 	var/last_resist = 0
+
+	var/cannot_become_antag = FALSE //used to prevent auto-antag from picking this target

@@ -42,6 +42,8 @@
 		TAG_FACTION =   FACTION_OTHER
 	)
 
+	cannot_become_antag = TRUE
+
 /datum/species/golem/handle_post_spawn(var/mob/living/carbon/human/H)
 	if(H.mind)
 		H.mind.reset()

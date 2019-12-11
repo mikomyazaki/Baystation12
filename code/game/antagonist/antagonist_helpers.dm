@@ -5,6 +5,8 @@
 			return 0
 		if(player.current.faction != MOB_FACTION_NEUTRAL)
 			return 0
+		if(player.current.cannot_become_antag)
+			return 0
 
 	if(is_type_in_list(player.assigned_job, blacklisted_jobs))
 		return 0

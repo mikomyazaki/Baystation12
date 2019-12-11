@@ -250,6 +250,8 @@
 	var/list/additional_available_cultural_info = list()
 	var/max_players
 
+	var/cannot_become_antag = FALSE
+
 	// Order matters, higher pain level should be higher up
 	var/list/pain_emotes_with_pain_level = list(
 		list(/decl/emote/audible/scream, /decl/emote/audible/whimper, /decl/emote/audible/moan, /decl/emote/audible/cry) = 70,
@@ -443,6 +445,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	H.mob_push_flags = push_flags
 	H.pass_flags = pass_flags
 	handle_limbs_setup(H)
+	if(!H.cannot_become_antag) //if our mob isn't already preventing antaggery, check if our species is
+		H.cannot_become_antag = cannot_become_antag
 
 /datum/species/proc/handle_pre_spawn(var/mob/living/carbon/human/H)
 	return

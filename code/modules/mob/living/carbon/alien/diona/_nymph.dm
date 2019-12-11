@@ -40,6 +40,8 @@
 	var/tmp/image/eyes
 	var/tmp/last_glow
 
+	cannot_become_antag = TRUE
+
 /mob/living/carbon/alien/diona/get_jump_distance()
 	return 3
 
