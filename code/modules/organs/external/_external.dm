@@ -146,7 +146,7 @@
 
 /obj/item/organ/external/emp_act(severity)
 
-	if(!BP_IS_ROBOTIC(src))
+	if(!BP_IS_ROBOTIC(src) && !BP_IS_ASSISTED(src))
 		return
 
 	if(owner && BP_IS_CRYSTAL(src)) // Crystalline robotics == piezoelectrics.
@@ -163,8 +163,7 @@
 		if (3)
 			burn_damage = 7.5
 
-	var/mult = 1 + !!(BP_IS_ASSISTED(src)) // This macro returns (large) bitflags.
-	burn_damage *= mult/species.get_burn_mod(owner) //ignore burn mod for EMP damage
+	burn_damage *= 1/species.get_burn_mod(owner) //ignore burn mod for EMP damage
 
 	var/power = 4 - severity //stupid reverse severity
 	for(var/obj/item/I in implants)
