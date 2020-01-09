@@ -479,7 +479,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/fourthdeck/aft)
 "bM" = (
-/obj/effect/shuttle_landmark/merchant/out,
 /turf/space,
 /area/space)
 "bN" = (
@@ -681,7 +680,7 @@
 /obj/machinery/door/airlock/external{
 	frequency = 1380;
 	icon_state = "closed";
-	id_tag = "merchant_shuttle_station_exterior";
+	id_tag = "";
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
@@ -943,13 +942,11 @@
 /area/storage/auxillary/starboard)
 "dh" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/external_air{
-	dir = 2;
-	id_tag = "merchant_shuttle_station_pump"
+	dir = 2
 	},
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
-	id_tag = "merchant_shuttle_station_sensor";
 	pixel_x = -24;
 	pixel_y = 0
 	},
@@ -1205,7 +1202,6 @@
 /obj/machinery/door/airlock/external{
 	frequency = 1380;
 	icon_state = "closed";
-	id_tag = "merchant_shuttle_station_interior";
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
@@ -1355,14 +1351,9 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	display_name = "Starboard Dock A";
 	frequency = 1380;
-	id_tag = "merchant_shuttle_station_dock";
 	pixel_x = 24;
 	pixel_y = 24;
-	req_access = list(list("ACCESS_EXTERNAL","ACCESS_TORCH_CREW"));
-	tag_airpump = "merchant_shuttle_station_pump";
-	tag_chamber_sensor = "merchant_shuttle_station_sensor";
-	tag_exterior_door = "merchant_shuttle_station_exterior";
-	tag_interior_door = "merchant_shuttle_station_interior"
+	req_access = list(list("ACCESS_EXTERNAL","ACCESS_TORCH_CREW"))
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/monotile,

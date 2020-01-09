@@ -53,8 +53,3 @@
 
 /obj/machinery/door/airlock/hatch/autoname/engineering
 	stripe_color = COLOR_AMBER
-
-
-//wild capitalism
-/datum/computer_file/program/merchant
-	required_access = null

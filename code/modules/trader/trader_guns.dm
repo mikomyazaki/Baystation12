@@ -9,7 +9,7 @@
 	caliber = CALIBER_PISTOL_SMALL
 
 /obj/item/weapon/gun/energy/laser/dogan
-	desc = "This carbine works just as well as a normal carbine. Most of the time." //removed reference to Dogan, since only the merchant is likely to know who that is.
+	desc = "This carbine works just as well as a normal carbine. Most of the time." //removed reference to Dogan, since only the trader is likely to know who that is.
 
 /obj/item/weapon/gun/energy/laser/dogan/consume_next_projectile()
 	projectile_type = pick(/obj/item/projectile/beam/midlaser, /obj/item/projectile/beam/lastertag/red, /obj/item/projectile/beam)

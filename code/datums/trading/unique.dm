@@ -69,7 +69,7 @@
 								/obj/item/weapon/aiModule                     = TRADER_SUBTYPES_ONLY)
 	want_multiplier = 5000
 
-	speech = list("hail_generic"     = "Blub am MERCHANT. Blub hunger for things. Boo bring them to blub, yes?",
+	speech = list("hail_generic"     = "Blub am TRADER. Blub hunger for things. Boo bring them to blub, yes?",
 				"hail_deny"          = "Blub does not want to speak to boo.",
 
 				"trade_complete"     = "Blub likes to trade!",
@@ -80,7 +80,7 @@
 				"how_much"           = "Blub wants bocks. Boo give bocks. Blub gives stuff blub found.",
 				"what_want"          = "Blub wants bocks. Big bocks, small bocks. Shiny bocks!",
 
-				"compliment_deny"    = "Blub is just MERCHANT. What do boo mean?",
+				"compliment_deny"    = "Blub is just TRADER. What do boo mean?",
 				"compliment_accept"  = "Boo are a bood berson!",
 				"insult_good"        = "Blub do not understand. Blub thought we were briends.",
 				"insult_bad"         = "Blub feels bad now.",

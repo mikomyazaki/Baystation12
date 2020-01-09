@@ -31,11 +31,11 @@
 	stored_files = list()
 	recalculate_size()
 
-// For idiot merchants who wipe the program from their console.
-/obj/item/weapon/stock_parts/computer/hard_drive/portable/merchant
-	name = "merchant_list_1155_CRACKZ_1155_no_keygen_repack"
+// For idiot traders who wipe the program from their console.
+/obj/item/weapon/stock_parts/computer/hard_drive/portable/trader
+	name = "trader_list_1155_CRACKZ_1155_no_keygen_repack"
 	desc = "An obviously pirated copy of well-known trading software."
 
-/obj/item/weapon/stock_parts/computer/hard_drive/portable/merchant/Initialize()
+/obj/item/weapon/stock_parts/computer/hard_drive/portable/trader/Initialize()
 	. = ..()
-	store_file(new/datum/computer_file/program/merchant(src))
+	store_file(new/datum/computer_file/program/trader(src))

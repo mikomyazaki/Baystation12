@@ -451,16 +451,16 @@
 	desc = "Synthetic"
 	access_type = ACCESS_TYPE_NONE
 
-/var/const/access_crate_cash = "ACCESS_MERCHANT_CASH" //300
+/var/const/access_crate_cash = "ACCESS_TRADER_CASH" //300
 /datum/access/crate_cash
 	id = access_crate_cash
 	desc = "Crate cash"
 	access_type = ACCESS_TYPE_NONE
 
-/var/const/access_merchant = "ACCESS_MERCHANT" //301
-/datum/access/merchant
-	id = access_merchant
-	desc = "Merchant"
+/var/const/access_trader = "ACCESS_TRADER" //301
+/datum/access/trader
+	id = access_trader
+	desc = "Trader"
 	access_type = ACCESS_TYPE_NONE
 
 // Ascent access.

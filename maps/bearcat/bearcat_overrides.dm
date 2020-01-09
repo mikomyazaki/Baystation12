@@ -1,5 +1,5 @@
 
-/datum/computer_file/program/merchant //wild capitalism
+/datum/computer_file/program/trader //wild capitalism
 	required_access = null
 
 /turf/simulated/floor

@@ -24,14 +24,6 @@
 	var/obj/item/weapon/storage/secure/briefcase/money/case = new(H.loc)
 	H.put_in_hands(case)
 
-/decl/hierarchy/outfit/job/torch/merchant
-	name = OUTFIT_JOB_NAME("Merchant - Torch")
-	uniform = /obj/item/clothing/under/color/black
-	l_ear = null
-	shoes = /obj/item/clothing/shoes/black
-	pda_type = /obj/item/modular_computer/pda
-	id_type = /obj/item/weapon/card/id/torch/merchant
-
 /decl/hierarchy/outfit/job/torch/ert
 	name = OUTFIT_JOB_NAME("ERT - Torch")
 	uniform = /obj/item/clothing/under/solgov/utility/fleet/combat

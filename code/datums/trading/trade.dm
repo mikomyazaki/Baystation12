@@ -16,16 +16,16 @@
 
 	var/list/speech = list()                                    //The list of all their replies and messages. Structure is (id = talk)
 	/*SPEECH IDS:
-	hail_generic		When merchants hail a person
+	hail_generic		When traders hail a person
 	hail_[race]			Race specific hails
-	hail_deny			When merchant denies a hail
+	hail_deny			When trader denies a hail
 
-	insult_good			When the player insults a merchant while they are on good disposition
+	insult_good			When the player insults a trader while they are on good disposition
 	insult_bad			When a player insults a merchatn when they are not on good disposition
-	complement_accept	When the merchant accepts a complement
-	complement_deny		When the merchant refuses a complement
+	complement_accept	When the trader accepts a complement
+	complement_deny		When the trader refuses a complement
 
-	how_much			When a merchant tells the player how much something is.
+	how_much			When a trader tells the player how much something is.
 	trade_complete		When a trade is made
 	trade_refuse		When a trade is refused
 
@@ -106,7 +106,7 @@
 		. = speech[key]
 	else
 		. = default
-	. = replacetext(., "MERCHANT", name)
+	. = replacetext(., "TRADER", name)
 	. = replacetext(., "ORIGIN", origin)
 	. = replacetext(.,"CURRENCY_SINGULAR", GLOB.using_map.local_currency_name_singular)
 	. = replacetext(.,"CURRENCY", GLOB.using_map.local_currency_name)
@@ -125,7 +125,7 @@
 			. = 1 + (SKILL_EXPERT - skill) * 0.2
 		else
 			. = 1 + (SKILL_EXPERT - skill) ** 2
-	//This condition ensures that the buy price is higher than the sell price on generic goods, i.e. the merchant can't be exploited
+	//This condition ensures that the buy price is higher than the sell price on generic goods, i.e. the trader can't be exploited
 	. = max(., price_rng/((margin - 1)*(200 - price_rng)))
 
 /datum/trader/proc/get_item_value(var/trading_num, skill = SKILL_MAX)

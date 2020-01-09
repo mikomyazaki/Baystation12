@@ -125,10 +125,6 @@
 	name = "Armory Blast Door Control";
 	pixel_y = 8
 	},
-/obj/item/weapon/card/id/merchant{
-	desc = "this card can be used to access the Colony's telepad to exchange goods.";
-	name = "trade array access card"
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/map_template/colony/command)
 "aw" = (
@@ -139,14 +135,14 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/map_template/colony/command)
 "ay" = (
-/obj/machinery/computer/modular/preset/merchant,
+/obj/machinery/computer/modular/preset/trader,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/map_template/colony/command)
 "az" = (
 /turf/simulated/wall,
 /area/map_template/colony/dorms)
 "aA" = (
-/obj/machinery/merchant_pad,
+/obj/machinery/trader_pad,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/map_template/colony/command)
 "aB" = (

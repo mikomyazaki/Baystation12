@@ -4954,7 +4954,7 @@
 "qO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/computer/modular/preset/merchant,
+/obj/machinery/computer/modular/preset/trader,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/scrap/cargo)
 "qS" = (
@@ -6434,7 +6434,7 @@
 	name = "Cargo Technician"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/merchant_pad,
+/obj/machinery/trader_pad,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/scrap/cargo)
 "RL" = (

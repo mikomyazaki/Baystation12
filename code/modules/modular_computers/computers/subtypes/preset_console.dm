@@ -150,9 +150,9 @@
 		/datum/computer_file/program/wordprocessor
 	)
 
-/obj/machinery/computer/modular/preset/merchant
+/obj/machinery/computer/modular/preset/trader
 	default_software = list(
-		/datum/computer_file/program/merchant,
+		/datum/computer_file/program/trader,
 		/datum/computer_file/program/email_client,
 		/datum/computer_file/program/wordprocessor
 	)

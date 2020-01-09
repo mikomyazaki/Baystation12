@@ -1,45 +1,44 @@
-/datum/computer_file/program/merchant
+/datum/computer_file/program/trader
 	filename = "mlist"
-	filedesc = "Merchant's List"
+	filedesc = "Trader's List"
 	extended_desc = "Allows communication and trade between passing vessels, even while jumping."
 	program_icon_state = "comm"
 	program_menu_icon = "cart"
-	nanomodule_path = /datum/nano_module/program/merchant
+	nanomodule_path = /datum/nano_module/program/trader
 	size = 12
 	usage_flags = PROGRAM_CONSOLE
-	required_access = access_merchant
-	var/obj/machinery/merchant_pad/pad = null
-	var/current_merchant = 0
+	var/obj/machinery/trader_pad/pad = null
+	var/current_trader = 0
 	var/show_trades = 0
-	var/hailed_merchant = 0
+	var/hailed_trader = 0
 	var/last_comms = null
 	var/temp = null
 	var/bank = 0 //A straight up money till
 
-/datum/nano_module/program/merchant
-	name = "Merchant's List"
+/datum/nano_module/program/trader
+	name = "Trader's List"
 
-/datum/computer_file/program/merchant/proc/get_merchant(var/num)
+/datum/computer_file/program/trader/proc/get_trader(var/num)
 	if(num > SStrade.traders.len)
 		num = SStrade.traders.len
 	if(num)
 		return SStrade.traders[num]
 
-/datum/nano_module/program/merchant/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/program/trader/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 	var/show_trade = 0
 	var/hailed = 0
 	var/datum/trader/T
 	if(program)
-		var/datum/computer_file/program/merchant/P = program
+		var/datum/computer_file/program/trader/P = program
 		data["temp"] = P.temp
-		data["mode"] = !!P.current_merchant
+		data["mode"] = !!P.current_trader
 		data["last_comms"] = P.last_comms
 		data["pad"] = !!P.pad
 		data["bank"] = P.bank
 		show_trade = P.show_trades
-		hailed = P.hailed_merchant
-		T = P.get_merchant(P.current_merchant)
+		hailed = P.hailed_trader
+		T = P.get_trader(P.current_trader)
 	data["mode"] = !!T
 	if(T)
 		data["traderName"] = T.name
@@ -53,22 +52,22 @@
 			data["trades"] = trades
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "merchant.tmpl", "Merchant List", 575, 700, state = state)
+		ui = new(user, src, ui_key, "trader.tmpl", "Trader List", 575, 700, state = state)
 		ui.auto_update_layout = 1
 		ui.set_initial_data(data)
 		ui.open()
 
-/datum/computer_file/program/merchant/proc/connect_pad()
-	for(var/obj/machinery/merchant_pad/P in orange(1,get_turf(computer)))
+/datum/computer_file/program/trader/proc/connect_pad()
+	for(var/obj/machinery/trader_pad/P in orange(1,get_turf(computer)))
 		pad = P
 		return
 
-/datum/computer_file/program/merchant/proc/test_fire()
+/datum/computer_file/program/trader/proc/test_fire()
 	if(pad && pad.get_target())
 		return 1
 	return 0
 
-/datum/computer_file/program/merchant/proc/offer_money(var/datum/trader/T, var/num, skill)
+/datum/computer_file/program/trader/proc/offer_money(var/datum/trader/T, var/num, skill)
 	if(pad)
 		var/response = T.offer_money_for_trade(num, bank, skill)
 		if(istext(response))
@@ -80,7 +79,7 @@
 		return
 	last_comms = "PAD NOT CONNECTED"
 
-/datum/computer_file/program/merchant/proc/bribe(var/datum/trader/T, var/amt)
+/datum/computer_file/program/trader/proc/bribe(var/datum/trader/T, var/amt)
 	if(bank < amt)
 		last_comms = "ERROR: NOT ENOUGH FUNDS."
 		return
@@ -88,7 +87,7 @@
 	bank -= amt
 	last_comms = T.bribe_to_stay_longer(amt)
 
-/datum/computer_file/program/merchant/proc/offer_item(var/datum/trader/T, var/num, skill)
+/datum/computer_file/program/trader/proc/offer_item(var/datum/trader/T, var/num, skill)
 	if(pad)
 		var/list/targets = pad.get_targets()
 		for(var/target in targets)
@@ -104,7 +103,7 @@
 		return
 	last_comms = "PAD NOT CONNECTED"
 
-/datum/computer_file/program/merchant/proc/sell_items(var/datum/trader/T, skill)
+/datum/computer_file/program/trader/proc/sell_items(var/datum/trader/T, skill)
 	if(pad)
 		var/list/targets = pad.get_targets()
 		var/response = T.sell_items(targets, skill)
@@ -116,7 +115,7 @@
 		return
 	last_comms = "PAD NOT CONNECTED"
 
-/datum/computer_file/program/merchant/proc/transfer_to_bank()
+/datum/computer_file/program/trader/proc/transfer_to_bank()
 	if(pad)
 		var/list/targets = pad.get_targets()
 		for(var/target in targets)
@@ -128,7 +127,7 @@
 		return
 	last_comms = "PAD NOT CONNECTED"
 
-/datum/computer_file/program/merchant/proc/get_money()
+/datum/computer_file/program/trader/proc/get_money()
 	if(!pad)
 		last_comms = "PAD NOT CONNECTED. CANNOT TRANSFER"
 		return
@@ -138,7 +137,7 @@
 	bank = 0
 	B.update_icon()
 
-/datum/computer_file/program/merchant/Topic(href, href_list)
+/datum/computer_file/program/trader/Topic(href, href_list)
 	if(..())
 		return 1
 	var/mob/user = usr
@@ -156,15 +155,15 @@
 		get_money()
 	if(href_list["PRG_main_menu"])
 		. = 1
-		current_merchant = 0
-	if(href_list["PRG_merchant_list"])
+		current_trader = 0
+	if(href_list["PRG_trader_list"])
 		if(SStrade.traders.len == 0)
 			. = 0
 			temp = "Cannot find any traders within broadcasting range."
 		else
 			. = 1
-			current_merchant = 1
-			hailed_merchant = 0
+			current_trader = 1
+			hailed_trader = 0
 			last_comms = null
 	if(href_list["PRG_test_fire"])
 		. = 1
@@ -180,13 +179,13 @@
 				scrolled = 1
 			if("left")
 				scrolled = -1
-		var/new_merchant  = Clamp(current_merchant + scrolled, 1, SStrade.traders.len)
-		if(new_merchant != current_merchant)
-			hailed_merchant = 0
+		var/new_trader  = Clamp(current_trader + scrolled, 1, SStrade.traders.len)
+		if(new_trader != current_trader)
+			hailed_trader = 0
 			last_comms = null
-		current_merchant = new_merchant
-	if(current_merchant)
-		var/datum/trader/T = get_merchant(current_merchant)
+		current_trader = new_trader
+	if(current_trader)
+		var/datum/trader/T = get_trader(current_trader)
 		if(!T.can_hail())
 			last_comms = T.get_response("hail_deny", "No, I'm not speaking with you.")
 			. = 1
@@ -195,7 +194,7 @@
 				. = 1
 				last_comms = T.hail(user)
 				show_trades = 0
-				hailed_merchant = 1
+				hailed_trader = 1
 			if(href_list["PRG_show_trades"])
 				. = 1
 				show_trades = !show_trades
