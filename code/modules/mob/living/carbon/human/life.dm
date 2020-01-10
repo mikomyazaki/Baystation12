@@ -623,6 +623,7 @@
 		//CONSCIOUS
 		else
 			set_stat(CONSCIOUS)
+			dreaming_timer = 0
 
 		// Check everything else.
 

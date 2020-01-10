@@ -1,4 +1,3 @@
-
 var/list/dreams = list(
 	"an ID card","a bottle","a familiar face","a crewmember","a toolbox","a security officer","the captain",
 	"voices from all around","deep space","a doctor","the engine","a traitor","an ally","darkness",
@@ -19,7 +18,7 @@ var/list/dreams = list(
 	"a surgery table", "a needle", "a blade", "an ocean", "right behind you", "standing above you", "someone near by", "a place forgotten", "the exodus",
 	)
 
-mob/living/carbon/proc/dream()
+/mob/living/carbon/proc/dream()
 	dreaming = 1
 
 	spawn(0)
@@ -32,8 +31,13 @@ mob/living/carbon/proc/dream()
 		dreaming = 0
 		return 1
 
-mob/living/carbon/proc/handle_dreams()
-	if(client && !dreaming && prob(5))
-		dream()
+/mob/living/carbon/proc/handle_dreams()
+	if(client)
+		if((world.time - dreaming_timer) > 15 SECONDS)
+			set_extension(src, /datum/extension/sleeper)
+			return
+		if(prob(5) && !dreaming)
+			dream()
 
-mob/living/carbon/var/dreaming = 0
+/mob/living/carbon/proc/get_sleeping_state()
+	return

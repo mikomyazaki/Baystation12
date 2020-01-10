@@ -9,6 +9,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/away_sites_templates = list()
 	var/list/submaps = list()
 	var/list/submap_archetypes = list()
+	var/list/dream_map_templates = list()
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	// Load templates and build away sites.
@@ -24,6 +25,7 @@ SUBSYSTEM_DEF(mapping)
 	space_ruins_templates = SSmapping.space_ruins_templates
 	exoplanet_ruins_templates = SSmapping.exoplanet_ruins_templates
 	away_sites_templates = SSmapping.away_sites_templates
+	dream_map_templates = SSmapping.dream_map_templates
 
 /datum/controller/subsystem/mapping/proc/preloadTemplates(path = "maps/templates/") //see master controller setup
 	var/list/filelist = flist(path)
@@ -37,11 +39,12 @@ SUBSYSTEM_DEF(mapping)
 	var/list/banned_exoplanet_dmms = generateMapList("config/exoplanet_ruin_blacklist.txt")
 	var/list/banned_space_dmms = generateMapList("config/space_ruin_blacklist.txt")
 	var/list/banned_away_site_dmms = generateMapList("config/away_site_blacklist.txt")
+	var/list/banned_dream_dmms = generateMapList("config/dream_maps_blacklist.txt")
 
-	if (!banned_exoplanet_dmms || !banned_space_dmms || !banned_away_site_dmms)
+	if (!banned_exoplanet_dmms || !banned_space_dmms || !banned_away_site_dmms || !banned_dream_dmms)
 		report_progress("One or more map blacklist files are not present in the config directory!")
 
-	var/list/banned_maps = list() + banned_exoplanet_dmms + banned_space_dmms + banned_away_site_dmms
+	var/list/banned_maps = list() + banned_exoplanet_dmms + banned_space_dmms + banned_away_site_dmms + banned_dream_dmms
 
 	for(var/item in sortList(subtypesof(/datum/map_template), /proc/cmp_ruincost_priority))
 		var/datum/map_template/map_template_type = item
@@ -68,3 +71,5 @@ SUBSYSTEM_DEF(mapping)
 			space_ruins_templates[MT.name] = MT
 		else if(istype(MT, /datum/map_template/ruin/away_site))
 			away_sites_templates[MT.name] = MT
+		else if(istype(MT, /datum/map_template/dream))
+			dream_map_templates[MT.name] = MT

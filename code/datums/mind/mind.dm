@@ -64,6 +64,8 @@
 
 	var/list/initial_email_login = list("login" = "", "password" = "")
 
+	var/dream_timer = null
+
 /datum/mind/New(var/key)
 	src.key = key
 	..()

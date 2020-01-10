@@ -39,3 +39,6 @@
 	var/stasis_value
 
 	var/player_triggered_sleeping = 0
+
+	var/dreaming = 0
+	var/dreaming_timer = 0
