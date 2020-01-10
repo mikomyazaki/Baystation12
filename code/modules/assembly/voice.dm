@@ -4,7 +4,7 @@
 	icon_state = "voice"
 	origin_tech = list(TECH_MAGNET = 1)
 	matter = list(MATERIAL_STEEL = 500, MATERIAL_GLASS = 50, MATERIAL_WASTE = 10)
-	var/listening = 0
+	var/listening = FALSE
 	var/recorded	//the activation message
 
 /obj/item/device/assembly/voice/New()
@@ -18,7 +18,7 @@
 /obj/item/device/assembly/voice/hear_talk(mob/living/M as mob, msg)
 	if(listening)
 		recorded = msg
-		listening = 0
+		listening = FALSE
 		var/turf/T = get_turf(src)	//otherwise it won't work in hand
 		T.visible_message("\icon[src] beeps, \"Activation message is '[recorded]'.\"")
 	else
@@ -34,11 +34,11 @@
 
 
 /obj/item/device/assembly/voice/attack_self(mob/user)
-	if(!user)	return 0
+	if(!user)
+		return FALSE
 	activate()
-	return 1
-
+	return TRUE
 
 /obj/item/device/assembly/voice/toggle_secure()
 	. = ..()
-	listening = 0
+	listening = FALSE

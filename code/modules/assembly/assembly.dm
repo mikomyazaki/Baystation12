@@ -11,11 +11,13 @@
 	throw_range = 10
 	origin_tech = list(TECH_MAGNET = 1)
 
-	var/secured = 1
+	var/secured = TRUE
 	var/list/attached_overlays = null
 	var/obj/item/device/assembly_holder/holder = null
-	var/cooldown = 0//To prevent spam
+	var/cooldown = FALSE
 	var/wires = WIRE_RECEIVE | WIRE_PULSE
+
+	var/cooldown_time = 2 SECONDS
 
 	var/const/WIRE_RECEIVE = 1			//Allows Pulsed(0) to call Activate()
 	var/const/WIRE_PULSE = 2				//Allows Pulse(0) to act on the holder
@@ -24,79 +26,52 @@
 	var/const/WIRE_RADIO_PULSE = 16		//Allows Pulse(1) to send a radio message
 
 /obj/item/device/assembly/proc/activate()									//What the device does when turned on
-	return
+	if(!secured || cooldown)
+		return FALSE
+	start_cooldown()
+	return TRUE
+
+/obj/item/device/assembly/proc/start_cooldown()
+	cooldown = TRUE
+	addtimer(CALLBACK(src, .proc/end_cooldown), cooldown_time, TIMER_UNIQUE)
 
 /obj/item/device/assembly/proc/pulsed(var/radio = 0)						//Called when another assembly acts on this one, var/radio will determine where it came from for wire calcs
-	return
-
-/obj/item/device/assembly/proc/pulse(var/radio = 0)						//Called when this device attempts to act on another device, var/radio determines if it was sent via radio or direct
-	return
-
-/obj/item/device/assembly/proc/toggle_secure()								//Code that has to happen when the assembly is un\secured goes here
-	return
-
-/obj/item/device/assembly/proc/attach_assembly(var/obj/A, var/mob/user)	//Called when an assembly is attacked by another
-	return
-
-/obj/item/device/assembly/proc/process_cooldown()							//Called via spawn(10) to have it count down the cooldown var
-	return
-
-/obj/item/device/assembly/proc/holder_movement()							//Called when the holder is moved
-	return
-
-/obj/item/device/assembly/interact(mob/user as mob)					//Called when attack_self is called
-	return
-
-
-/obj/item/device/assembly/process_cooldown()
-	cooldown--
-	if(cooldown <= 0)	return 0
-	spawn(10)
-		process_cooldown()
-	return 1
-
-
-/obj/item/device/assembly/pulsed(var/radio = 0)
 	if(holder && (wires & WIRE_RECEIVE))
 		activate()
 	if(radio && (wires & WIRE_RADIO_RECEIVE))
 		activate()
-	return 1
+	return TRUE
 
-
-/obj/item/device/assembly/pulse(var/radio = 0)
+/obj/item/device/assembly/proc/pulse(var/radio = 0)						//Called when this device attempts to act on another device, var/radio determines if it was sent via radio or direct
 	if(holder && (wires & WIRE_PULSE))
 		holder.process_activation(src, 1, 0)
 	if(holder && (wires & WIRE_PULSE_SPECIAL))
 		holder.process_activation(src, 0, 1)
 //		if(radio && (wires & WIRE_RADIO_PULSE))
 		//Not sure what goes here quite yet send signal?
-	return 1
+	return TRUE
 
-
-/obj/item/device/assembly/activate()
-	if(!secured || (cooldown > 0))	return 0
-	cooldown = 2
-	spawn(10)
-		process_cooldown()
-	return 1
-
-
-/obj/item/device/assembly/toggle_secure()
+/obj/item/device/assembly/proc/toggle_secure()								//Code that has to happen when the assembly is un\secured goes here
 	secured = !secured
 	update_icon()
 	return secured
 
-
-/obj/item/device/assembly/attach_assembly(var/obj/item/device/assembly/A, var/mob/user)
+/obj/item/device/assembly/proc/attach_assembly(var/obj/A, var/mob/user)	//Called when an assembly is attacked by another
 	holder = new/obj/item/device/assembly_holder(get_turf(src))
 	if(holder.attach(A,src,user))
-		to_chat(user, "<span class='notice'>You attach \the [A] to \the [src]!</span>")
-		return 1
-	return 0
+		to_chat(user, SPAN_NOTICE("You attach \the [A] to \the [src]!"))
+		return TRUE
 
+/obj/item/device/assembly/proc/end_cooldown()
+	cooldown = FALSE													//Called via a timer to finish the cooldown of an assembly
 
-/obj/item/device/assembly/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/device/assembly/proc/holder_movement()							//Called when the holder is moved
+	return
+
+/obj/item/device/assembly/interact(var/mob/user)					//Called when attack_self is called
+	return
+
+/obj/item/device/assembly/attackby(var/obj/item/weapon/W, var/mob/user)
 	if(isassembly(W))
 		var/obj/item/device/assembly/A = W
 		if((!A.secured) && (!secured))
@@ -104,19 +79,16 @@
 			return
 	if(isScrewdriver(W))
 		if(toggle_secure())
-			to_chat(user, "<span class='notice'>\The [src] is ready!</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is ready!"))
 		else
-			to_chat(user, "<span class='notice'>\The [src] can now be attached!</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] can now be attached!"))
 		return
 	..()
-	return
-
 
 /obj/item/device/assembly/Process()
 	return PROCESS_KILL
 
-
-/obj/item/device/assembly/examine(mob/user, distance)
+/obj/item/device/assembly/examine(var/mob/user, var/distance)
 	. = ..()
 	if(distance <= 1 || loc == user)
 		if(secured)
@@ -124,55 +96,13 @@
 		else
 			to_chat(user, "\The [src] can be attached!")
 
-
-/obj/item/device/assembly/attack_self(mob/user as mob)
-	if(!user)	return 0
-	user.set_machine(src)
-	interact(user)
-	return 1
-
-/obj/item/device/assembly/interact(mob/user as mob)
-	return //HTML MENU FOR WIRES GOES HERE
+/obj/item/device/assembly/attack_self(var/mob/user)
+	if(user)
+		user.set_machine(src)
+		interact(user)
+		return TRUE
 
 /obj/item/device/assembly/nano_host()
 	if(istype(loc, /obj/item/device/assembly_holder))
 		return loc.nano_host()
 	return ..()
-
-/*
-	var/small_icon_state = null//If this obj will go inside the assembly use this for icons
-	var/list/small_icon_state_overlays = null//Same here
-	var/obj/holder = null
-	var/cooldown = 0//To prevent spam
-
-	proc
-		Activate()//Called when this assembly is pulsed by another one
-		Process_cooldown()//Call this via spawn(10) to have it count down the cooldown var
-		Attach_Holder(var/obj/H, var/mob/user)//Called when an assembly holder attempts to attach, sets src's loc in here
-
-
-	Activate()
-		if(cooldown > 0)
-			return 0
-		cooldown = 2
-		spawn(10)
-			Process_cooldown()
-		//Rest of code here
-		return 0
-
-
-	Process_cooldown()
-		cooldown--
-		if(cooldown <= 0)	return 0
-		spawn(10)
-			Process_cooldown()
-		return 1
-
-
-	Attach_Holder(var/obj/H, var/mob/user)
-		if(!H)	return 0
-		if(!H.IsAssemblyHolder())	return 0
-		//Remember to have it set its loc somewhere in here
-
-
-*/

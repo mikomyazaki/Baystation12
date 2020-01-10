@@ -7,55 +7,49 @@
 
 	wires = WIRE_PULSE
 
-	secured = 0
+	secured = FALSE
 
-	var/timing = 0
+	var/timing = FALSE
 	var/time = 10
 
 /obj/item/device/assembly/timer/proc/timer_end()
 
 
 /obj/item/device/assembly/timer/activate()
-	if(!..())	return 0//Cooldown check
+	if(!..()) //Cooldown check
+		return FALSE
 
 	timing = !timing
 
 	update_icon()
-	return 0
-
+	return FALSE
 
 /obj/item/device/assembly/timer/toggle_secure()
 	secured = !secured
 	if(secured)
 		START_PROCESSING(SSobj, src)
 	else
-		timing = 0
+		timing = FALSE
 		STOP_PROCESSING(SSobj, src)
 	update_icon()
 	return secured
 
-
 /obj/item/device/assembly/timer/timer_end()
-	if(!secured)	return 0
+	if(!secured)
+		return FALSE
 	pulse(0)
 	if(!holder)
 		visible_message("\icon[src] *beep* *beep*", "*beep* *beep*")
-	cooldown = 2
-	spawn(10)
-		process_cooldown()
-	return
-
+	start_cooldown()
 
 /obj/item/device/assembly/timer/Process()
 	if(timing && (time > 0))
 		time--
 		playsound(loc, 'sound/items/timer.ogg', 50)
 	if(timing && time <= 0)
-		timing = 0
+		timing = FALSE
 		timer_end()
 		time = 10
-	return
-
 
 /obj/item/device/assembly/timer/on_update_icon()
 	overlays.Cut()
@@ -65,13 +59,11 @@
 		attached_overlays += "timer_timing"
 	if(holder)
 		holder.update_icon()
-	return
 
-
-/obj/item/device/assembly/timer/interact(mob/user as mob)//TODO: Have this use the wires
+/obj/item/device/assembly/timer/interact(var/mob/user)
 	if(!secured)
 		user.show_message("<span class='warning'>\The [name] is unsecured!</span>")
-		return 0
+		return FALSE
 	var/second = time % 60
 	var/minute = (time - second) / 60
 	var/dat = text("<TT><B>Timing Unit</B>\n[] []:[]\n<A href='?src=\ref[];tp=-30'>-</A> <A href='?src=\ref[];tp=-1'>-</A> <A href='?src=\ref[];tp=1'>+</A> <A href='?src=\ref[];tp=30'>+</A>\n</TT>", (timing ? text("<A href='?src=\ref[];time=0'>Timing</A>", src) : text("<A href='?src=\ref[];time=1'>Not Timing</A>", src)), minute, second, src, src, src, src)
@@ -79,8 +71,6 @@
 	dat += "<BR><BR><A href='?src=\ref[src];close=1'>Close</A>"
 	user << browse(dat, "window=timer")
 	onclose(user, "timer")
-	return
-
 
 /obj/item/device/assembly/timer/Topic(href, href_list, state = GLOB.physical_state)
 	if((. = ..()))
@@ -103,5 +93,3 @@
 
 	if(usr)
 		attack_self(usr)
-
-	return

@@ -12,9 +12,8 @@
 	qdel(part1)
 	qdel(part2)
 	..()
-	return
 
-/obj/item/assembly/shock_kit/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/assembly/shock_kit/attackby(var/obj/item/weapon/W, var/mob/user)
 	if(isWrench(W) && !status)
 		part1.dropInto(loc)
 		part2.dropInto(loc)
@@ -26,18 +25,15 @@
 		return
 	if(isScrewdriver(W))
 		status = !status
-		to_chat(user, "<span class='notice'>[src] is now [status ? "secured" : "unsecured"]!</span>")
+		to_chat(user, SPAN_NOTICE("[src] is now [status ? "secured" : "unsecured"]!"))
 	add_fingerprint(user)
-	return
 
-/obj/item/assembly/shock_kit/attack_self(mob/user as mob)
+/obj/item/assembly/shock_kit/attack_self(var/mob/user)
 	part1.attack_self(user, status)
 	part2.attack_self(user, status)
 	add_fingerprint(user)
-	return
 
 /obj/item/assembly/shock_kit/receive_signal()
 	if(istype(loc, /obj/structure/bed/chair/e_chair))
 		var/obj/structure/bed/chair/e_chair/C = loc
 		C.shock()
-	return

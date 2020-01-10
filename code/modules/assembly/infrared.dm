@@ -10,8 +10,8 @@
 	secured = 0
 	obj_flags = OBJ_FLAG_CONDUCTIBLE | OBJ_FLAG_ROTATABLE
 
-	var/on = 0
-	var/visible = 0
+	var/on = FALSE
+	var/visible = FALSE
 	var/list/beams
 	var/list/seen_turfs
 	var/datum/proximity_trigger/line/proximity_trigger
@@ -30,9 +30,9 @@
 
 /obj/item/device/assembly/infra/activate()
 	if(!..())
-		return 0//Cooldown check
+		return FALSE//Cooldown check
 	set_active(!on)
-	return 1
+	return TRUE
 
 /obj/item/device/assembly/infra/proc/set_active(new_on)
 	if(new_on == on)
@@ -57,7 +57,7 @@
 		holder.update_icon()
 	update_beams()
 
-/obj/item/device/assembly/infra/interact(mob/user as mob)//TODO: change this this to the wire control panel
+/obj/item/device/assembly/infra/interact(var/mob/user)//TODO: change this this to the wire control panel
 	if(!secured)
 		return
 	if(!CanInteract(user, GLOB.physical_state))
@@ -75,7 +75,7 @@
 	if(..())
 		usr << browse(null, "window=infra")
 		onclose(usr, "infra")
-		return 1
+		return TRUE
 
 	if(href_list["state"])
 		set_active(!on)
@@ -96,17 +96,15 @@
 		return
 	if(enterer.invisibility > INVISIBILITY_LEVEL_TWO)
 		return
-	if(!secured || !on || cooldown > 0)
-		return 0
+	if(!secured || !on || cooldown)
+		return FALSE
 	if((ismob(enterer) && !isliving(enterer))) // Observers and their ilk don't count even if visible
 		return
 
 	pulse(0)
 	if(!holder)
 		visible_message("\icon[src] *beep* *beep*")
-	cooldown = 2
-	spawn(10)
-		process_cooldown()
+	start_cooldown()
 
 /obj/item/device/assembly/infra/proc/on_visibility_change(var/list/old_turfs, var/list/new_turfs)
 	seen_turfs = new_turfs
@@ -145,5 +143,5 @@
 	name = "ir beam"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "ibeam"
-	anchored = 1
-	simulated = 0
+	anchored = TRUE
+	simulated = FALSE
